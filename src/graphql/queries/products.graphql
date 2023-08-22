@@ -1,0 +1,8 @@
+query FindAllProducts($limit: Int, $offset: Int, $search: SearchProductParametersInput) {
+  findAllProducts(limit: $limit, offset: $offset, search: $search) {
+    id
+    name
+    price
+    category
+  }
+}

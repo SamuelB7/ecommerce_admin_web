@@ -1,0 +1,21 @@
+schema: http://localhost:3333/graphql
+documents: './src/**/*.graphql'
+generates:
+  ./src/graphql/generated/graphql.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo
+    config:
+      reactApolloVersion: 3
+  ./src/graphql/generated/page.tsx:
+    plugins:
+      - graphql-codegen-apollo-next-ssr
+    preset: import-types
+    presetConfig:
+      typesPath: ./graphql
+    config:
+      reactApolloVersion: 3
+      apolloClientInstanceImport: '@/apollo'
+      withHOC: false
+      withHooks: true
