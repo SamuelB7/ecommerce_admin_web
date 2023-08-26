@@ -5,4 +5,4 @@ export default {
     component: Menu,
 }
 
-export const MenuStory = () => <Menu />
+export const MenuStory = () => <Menu open={true} />

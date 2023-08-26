@@ -7,19 +7,20 @@ import { HiDocument } from 'react-icons/hi'
 import { FaUsers } from 'react-icons/fa'
 import { IoLogOut } from 'react-icons/io5'
 
-export default function Menu() {
-    const [open, setOpen] = useState(false)
+type MenuProps = {
+    setOpen: () => void,
+    setClose: () => void,
+    open: boolean
+}
 
-    const openMenu = () => setOpen(true)
-    const closeMenu = () => setOpen(false)
+export default function Menu({ setOpen, setClose, open }: MenuProps) {
 
     return (
         <>
-            <Button onClick={openMenu}>OPEN MENU</Button>
-            <Drawer open={open} onClose={closeMenu}>
+            <Drawer open={open} onClose={setClose}>
                 <div className="flex items-center justify-between p-4">
                     <Typography variant="h5">E-COMMERCE ADMIN</Typography>
-                    <IconButton variant="text" color="blue-gray" onClick={closeMenu}>
+                    <IconButton variant="text" color="blue-gray" onClick={setClose}>
                         <AiOutlineClose />
                     </IconButton>
                 </div>
