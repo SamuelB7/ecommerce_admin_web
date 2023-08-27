@@ -12,7 +12,8 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "@apollo/client": "^3.8.1",
+    "@apollo/client": "^3.8.0-rc.2",
+    "@apollo/experimental-nextjs-app-support": "^0.4.1",
     "@material-tailwind/react": "^2.1.0",
     "@types/node": "20.5.1",
     "@types/react": "18.2.20",

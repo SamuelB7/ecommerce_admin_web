@@ -17,5 +17,7 @@ generates:
     config:
       reactApolloVersion: 3
       apolloClientInstanceImport: '@/apollo'
+      contextType: 'ApolloClientContext'
+      contextTypeRequired: true
       withHOC: false
       withHooks: true

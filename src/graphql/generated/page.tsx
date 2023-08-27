@@ -5,7 +5,21 @@ import { NextRouter, useRouter } from 'next/router'
 import { QueryHookOptions, useQuery } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 import type React from 'react';
-import { getApolloClient } from '@/apollo';
+import { getApolloClient , ApolloClientContext} from '@/apollo';
+export const SignInDocument = gql`
+    mutation SignIn($signInInput: LoginInput!) {
+  signIn(signInInput: $signInInput) {
+    accessToken
+  }
+}
+    `;
+export const SignUpDocument = gql`
+    mutation SignUp($signUpInput: UserRegisterInput!) {
+  signUp(signUpInput: $signUpInput) {
+    accessToken
+  }
+}
+    `;
 export const FindAllProductsDocument = gql`
     query FindAllProducts($limit: Int, $offset: Int, $search: SearchProductParametersInput) {
   findAllProducts(limit: $limit, offset: $offset, search: $search) {
@@ -17,7 +31,7 @@ export const FindAllProductsDocument = gql`
 }
     `;
 export async function getServerPageFindAllProducts
-    (options: Omit<Apollo.QueryOptions<Types.FindAllProductsQueryVariables>, 'query'>, ctx?: any ){
+    (options: Omit<Apollo.QueryOptions<Types.FindAllProductsQueryVariables>, 'query'>, ctx: ApolloClientContext ){
         const apolloClient = getApolloClient(ctx);
         
         const data = await apolloClient.query<Types.FindAllProductsQuery>({ ...options, query: FindAllProductsDocument });
